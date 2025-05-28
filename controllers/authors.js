@@ -45,8 +45,45 @@ const createAuthor = async (req, res) => {
     }
 };
 
+const updateAuthor = async (req, res) => {
+  //#swagger.tags=['Authors']
+  if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json('Must use a valid contact id to update an author.');
+    }
+  const authorId = new ObjectId(req.params.id);
+  const author = {
+    name: req.body.name,
+    nationality: req.body.nationality,
+    birthyear: req.body.birthyear
+  };
+
+  const response = await mongodb.getDatabase().db().collection('authors').replaceOne({_id: authorId}, author);
+  if (response.modifiedCount > 0) {
+      res.status(204).send();
+  } else {
+      res.status(500).json(response.error || 'Some error occurred while updating the author.');
+  }
+};
+
+const deleteAuthor = async (req, res) => {
+  //#swagger.tags=['Authors']
+  if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json('Must use a valid contact id to delete an author.');
+    }
+  const authorId = new ObjectId(req.params.id);
+
+  const response = await mongodb.getDatabase().db().collection('authors').deleteOne({_id: authorId});
+  if (response.deletedCount > 0) {
+      res.status(204).send();
+  } else {
+      res.status(500).json(response.error || 'Some error occurred while deleting the author.');
+  }
+};
+
 module.exports = {
   getAll,
   getSingle,
-  createAuthor
+  createAuthor,
+  updateAuthor,
+  deleteAuthor
 };
