@@ -7,7 +7,7 @@ const saveBook = (req, res, next) => {
     publishedYear: 'required|year',
     genre: 'required|string',
     pages: 'required|integer',
-    birthday: 'required|date',
+    language: 'required|integer',
     available: 'required|boolean'
   };
 
