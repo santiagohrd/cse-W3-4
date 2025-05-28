@@ -4,7 +4,7 @@ const saveBook = (req, res, next) => {
   const validationRule = {
     title: 'required|string',
     author: 'required|string',
-    publishedYear: 'required|year',
+    publishedYear: 'required|integer',
     genre: 'required|string',
     pages: 'required|integer',
     language: 'required|integer',
