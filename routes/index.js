@@ -1,13 +1,16 @@
 const router = require('express').Router();
 
-// router.use('/', require('./swagger'));
+// router.use('/', require('../swagger'));
 
-const booksController = require('../controllers/books');
+const booksRoutes = require('./books');
+const authorsRoutes = require('./authors');
 
-router.get('/', booksController.getAll);
-router.get('/', booksController.getSingle);
 
-router.post('/', booksController.createBook);
+router.get('/', (req, res) => {
+    res.send('Root')
+})
 
+router.use('/books', booksRoutes)
+router.use('/authors', authorsRoutes);
 
 module.exports = router;
