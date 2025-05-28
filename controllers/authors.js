@@ -57,7 +57,7 @@ const updateAuthor = async (req, res) => {
     birthyear: req.body.birthyear
   };
 
-  const response = await mongodb.getDatabase().db().collection('authors').replaceOne({_id: authorId}, author);
+  const response = await mongodb.getDatabase().collection('authors').replaceOne({_id: authorId}, author);
   if (response.modifiedCount > 0) {
       res.status(204).send();
   } else {
@@ -72,7 +72,7 @@ const deleteAuthor = async (req, res) => {
     }
   const authorId = new ObjectId(req.params.id);
 
-  const response = await mongodb.getDatabase().db().collection('authors').deleteOne({_id: authorId});
+  const response = await mongodb.getDatabase().collection('authors').deleteOne({_id: authorId});
   if (response.deletedCount > 0) {
       res.status(204).send();
   } else {

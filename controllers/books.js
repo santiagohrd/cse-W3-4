@@ -65,7 +65,7 @@ const updateBook = async (req, res) => {
     available: req.body.available
   };
 
-  const response = await mongodb.getDatabase().db().collection('books').replaceOne({_id: bookId}, book);
+  const response = await mongodb.getDatabase().collection('books').replaceOne({_id: bookId}, book);
   if (response.modifiedCount > 0) {
       res.status(204).send();
   } else {
@@ -80,7 +80,7 @@ const deleteBook = async (req, res) => {
     }
   const bookId = new ObjectId(req.params.id);
 
-  const response = await mongodb.getDatabase().db().collection('books').deleteOne({_id: bookId});
+  const response = await mongodb.getDatabase().collection('books').deleteOne({_id: bookId});
   if (response.deletedCount > 0) {
       res.status(204).send();
   } else {

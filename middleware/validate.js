@@ -7,7 +7,7 @@ const saveBook = (req, res, next) => {
     publishedYear: 'required|integer',
     genre: 'required|string',
     pages: 'required|integer',
-    language: 'required|integer',
+    language: 'required|string',
     available: 'required|boolean'
   };
 
@@ -27,7 +27,7 @@ const saveBook = (req, res, next) => {
 const saveAuthor = (req, res, next) => {
     const validationRule = {
       name: 'required|string',
-      birthdate: 'required|date',
+      birthdate: 'required|string',
       nationality: 'required|string'
     };
   
