@@ -13,12 +13,12 @@ const getAll = async (req, res) => {
 const getSingle = async (req, res) => {
   try {
       if (!ObjectId.isValid(req.params.id)) {
-        return res.status(400).json('Must use a valid book id to find a author.');
+        return res.status(400).json('Must use a valid author id to find a author.');
       }
       const authorId = new ObjectId(req.params.id);
-      const author = await mongodb.getDatabase().collection('books').findOne({ _id: authorId });
+      const author = await mongodb.getDatabase().collection('authors').findOne({ _id: authorId });
       if (!author) {
-        return res.status(404).json('Book not found');
+        return res.status(404).json('Author not found');
       }
       res.status(200).json(author);
     } catch (err) {
