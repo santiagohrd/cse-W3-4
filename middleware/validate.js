@@ -27,7 +27,7 @@ const saveBook = (req, res, next) => {
 const saveAuthor = (req, res, next) => {
     const validationRule = {
       name: 'required|string',
-      birthdate: 'required|string',
+      birthdate: 'string',
       nationality: 'required|string'
     };
   
