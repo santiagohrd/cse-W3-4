@@ -4,6 +4,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const mongodb = require('./data/database');
 const routes = require('./routes/index');
+const dotenv = require('dotenv').config();
 const passport = require("passport");
 const session = require("express-session");
 const GitHubStrategy = require("passport-github2").Strategy;
@@ -85,7 +86,7 @@ app.get("/github/callback", passport.authenticate("github", {
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.use('/', routes);
+// app.use('/', routes);
 
 
 process.on('uncaughtException', (err, origin) => {
