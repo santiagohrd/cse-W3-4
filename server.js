@@ -86,7 +86,7 @@ app.get("/github/callback", passport.authenticate("github", {
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// app.use('/', routes);
+app.use('/', routes);
 
 
 process.on('uncaughtException', (err, origin) => {
